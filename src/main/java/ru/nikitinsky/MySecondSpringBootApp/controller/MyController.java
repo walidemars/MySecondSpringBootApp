@@ -35,8 +35,16 @@ public class MyController {
     @PostMapping(value = "/feedback")
     public ResponseEntity<Response> feedback(@Valid @RequestBody Request request,
                                              BindingResult bindingResult) {
+        Date currentTime = new Date();
+        long timeDifference = 0;
 
-        log.info("Получен request: {}", request);
+
+        if (request.getRequestTime() != null) {
+            timeDifference = currentTime.getTime() - request.getRequestTime().getTime();
+            }
+
+        log.info("Получен request в Service2: {}", request);
+        log.info("Разница во времени между получением в service1 и service2: {} ms", timeDifference);
 
         Response response = Response.builder()
                 .uid(request.getUid())
@@ -83,6 +91,7 @@ public class MyController {
 
         response = modifyResponseService.modify(response);
         log.info("Response после модификации: {}", response);
+
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

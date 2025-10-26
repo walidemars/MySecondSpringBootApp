@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -23,7 +25,7 @@ public class Request {
     @Size(max = 32, message = "operationUid должен быть не длиннее 32 символов")
     private String operationUid;
 
-    private Systems systemName;
+    private String systemName;
 
     @NotBlank(message = "systemTime не может быть пустым")
     private String systemTime;
@@ -37,13 +39,16 @@ public class Request {
     private int templateId;
     private int productCode;
     private int smsCode;
+    private Date requestTime;
+
+    //private Date
 
     @Override
     public String toString() {
         return "{" +
                 "uid='" + uid + '\'' +
                 ", operationUid='" + operationUid + '\'' +
-                ", systemName='" + systemName.getName() + '\'' +
+                ", systemName='" + systemName + '\'' +
                 ", systemTime='" + systemTime + '\'' +
                 ", source='" + source + '\'' +
                 ", communicationId='" + communicationId + '\'' +
