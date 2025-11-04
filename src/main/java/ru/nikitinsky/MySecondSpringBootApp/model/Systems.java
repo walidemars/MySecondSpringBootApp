@@ -1,7 +1,9 @@
 package ru.nikitinsky.MySecondSpringBootApp.model;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.Getter;
 
+@Getter
 public enum Systems {
 
     ERP("Enterprise Resource Planning"),

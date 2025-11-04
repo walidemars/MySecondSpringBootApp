@@ -6,12 +6,13 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import ru.nikitinsky.MySecondSpringBootApp.model.Request;
+import ru.nikitinsky.MySecondSpringBootApp.model.Systems;
 
 @Service
 public class ModifySystemNameRequestService implements ModifyRequestService {
     @Override
     public void modify(Request request) {
-        request.setSystemName("Service 1");
+        request.setSystemName(Systems.ERP);
 
         HttpEntity<Request> httpEntity = new HttpEntity<>(request);
 
